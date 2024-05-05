@@ -11,8 +11,12 @@ This guide details the steps to establish a robust development environment for K
 
 ### 1. Install System Utilities
 Install essential utilities for system monitoring and Kubernetes management:
+
+k9s - nice commandline k8s interface
+btop - mem and cpu ussage.... Trust me, just run `btop` and you will understand
+
 ```bash
-sudo zypper install k9s btop docker  # 'k9s' for Kubernetes management, 'btop' for monitoring, and 'docker'
+sudo zypper install -y k9s btop docker docker-compose
 ```
 
 ### 2. Install Homebrew
@@ -25,10 +29,24 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 ### 3. Install Kubernetes Tools
 Using Homebrew, install tools necessary for Kubernetes management:
-```bash
-brew install kubectl       # Command-line tool for Kubernetes
-brew install clusterctl    # CLI tool to manage lifecycle of Kubernetes clusters
-brew install helm          # Helps manage Kubernetes applications
+#!/bin/bash
+
+# Install kubectl
+```
+brew install kubectl
+```
+
+# Install clusterctl
+```
+brew install clusterctl
+```
+# Install helm
+```
+brew install helm
+```
+# Install k9s
+```
+brew install k9s
 ```
 
 
