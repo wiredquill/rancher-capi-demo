@@ -46,13 +46,13 @@ Set up the `/data` directory and clone the necessary Kubernetes configurations:
 sudo mkdir -p /data
 sudo chmod -R 777 /data
 cd /data
-git clone https://github.com/rancher/highlander.git
+git clone [https://github.com/rancher/highlander.git](https://github.com/wiredquill/rancher-capi-demo.git)
 ```
 
 ### 6. Manage Kubernetes Cluster with Kind
 Manage your Kubernetes cluster configurations and operations using Kind:
 ```bash
-cd /data/highlander/demos/kubecon-limited-ga/
+cd /data/rancher-capi-demo/Kind-Rancher
 kind create cluster --config kind-cluster-with-extramounts.yaml
 kind get clusters
 kind delete cluster --name demo
