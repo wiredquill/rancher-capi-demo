@@ -55,17 +55,12 @@ Manage your Kubernetes cluster configurations and operations using Kind:
 cd /data/rancher-capi-demo/Kind-Rancher
 kind create cluster --config kind-cluster-with-extramounts.yaml
 kind get clusters
-kind delete cluster --name demo
+
+## If you need to delete the cluster `kind delete cluster --name demo`
 
 # Restart Docker service to ensure no container issues
 sudo systemctl restart docker.service
 
-# Edit the Kind configuration file
-vi kind-cluster-with-extramounts.yaml
-
-# Recreate the cluster with the updated configuration
-kind create cluster --config kind-cluster-with-extramounts.yaml
-```
 
 ## Conclusion
 Following these detailed steps will equip you with a functional and flexible Kubernetes development environment. This setup enables effective management and deployment of Kubernetes clusters using a variety of essential tools.
