@@ -41,9 +41,9 @@ sudo systemctl enable --now docker.service
 ### 5. Prepare Data Directory
 Set up the `/data` directory and clone the necessary Kubernetes configurations:
 ```bash
-mkdir -p /data
-cd /data
+sudo mkdir -p /data
 sudo chmod -R 777 /data
+cd /data
 git clone https://github.com/rancher/highlander.git
 ```
 
