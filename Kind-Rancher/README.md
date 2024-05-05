@@ -23,7 +23,13 @@ sudo zypper install -y k9s btop docker docker-compose
 Homebrew is a versatile package manager for Linux and macOS. To install Homebrew and configure it for immediate use:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/erin/.bashrc
+```
+Setup brew env in your .bashrc
+```
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
+```
+
+```
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 ```
 
@@ -31,30 +37,23 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 Using Homebrew, install tools necessary for Kubernetes management:
 #!/bin/bash
 
-# Install kubectl
-```
-brew install kubectl
-```
+# Install kubectl helm clusterctl kind
 
-# Install clusterctl
-```
-brew install clusterctl
-```
-# Install helm
-```
-brew install helm
-```
-# Install k9s
-```
-brew install k9s
-```
+clusterctl - a utiltiy that is need to talk to the CAPI API 
+kind - k8s in docker - Note this is temp until we swap this out to k3d or something
 
-
+```
+brew install kubectl helm clusterctl kind
+```
 
 ### 4. Configure User Permissions
-Add user 'erin' to the Docker group to manage Docker without root privileges and ensure Docker starts automatically:
+Add user 'erin' to the Docker group to manage Docker without root privileges
 ```bash
 sudo usermod -aG docker erin
+```
+
+Start Docker and have it run automatically:
+```
 sudo systemctl enable --now docker.service
 ```
 
@@ -62,22 +61,41 @@ sudo systemctl enable --now docker.service
 Set up the `/data` directory and clone the necessary Kubernetes configurations:
 ```bash
 sudo mkdir -p /data
+```
+```
 sudo chmod -R 777 /data
+```
+
+```
 cd /data
-git clone [https://github.com/rancher/highlander.git](https://github.com/wiredquill/rancher-capi-demo.git)
+```
+
+clone the repo with demo files
+```
+git clone https://github.com/wiredquill/rancher-capi-demo.git
 ```
 
 ### 6. Manage Kubernetes Cluster with Kind
 Manage your Kubernetes cluster configurations and operations using Kind:
 ```bash
 cd /data/rancher-capi-demo/Kind-Rancher
+```
+Create the instance of K8s in Kind that we will use as our main Rancher K8s instance
+```
 kind create cluster --config kind-cluster-with-extramounts.yaml
+```
+Make sure the cluster is up
+```
 kind get clusters
+```
 
 ## If you need to delete the cluster `kind delete cluster --name demo`
 
 # Restart Docker service to ensure no container issues
 sudo systemctl restart docker.service
+
+
+
 
 
 ## Conclusion
