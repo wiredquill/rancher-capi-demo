@@ -7,9 +7,15 @@ This guide details the steps to establish a robust development environment for K
 - Linux-based operating system
 - User account with sudo or root access
 
-## Installation Steps
+## Installation Steps (Run as a users - Example uses 'erin')
 
-### 1. Install Homebrew
+### 1. Install System Utilities
+Install essential utilities for system monitoring and Kubernetes management:
+```bash
+sudo zypper install k9s btop docker  # 'k9s' for Kubernetes management, 'btop' for monitoring, and 'docker'
+```
+
+### 2. Install Homebrew
 Homebrew is a versatile package manager for Linux and macOS. To install Homebrew and configure it for immediate use:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -17,7 +23,7 @@ echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/erin/.bas
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 ```
 
-### 2. Install Kubernetes Tools
+### 3. Install Kubernetes Tools
 Using Homebrew, install tools necessary for Kubernetes management:
 ```bash
 brew install kubectl       # Command-line tool for Kubernetes
@@ -25,11 +31,7 @@ brew install clusterctl    # CLI tool to manage lifecycle of Kubernetes clusters
 brew install helm          # Helps manage Kubernetes applications
 ```
 
-### 3. Install System Utilities
-Install essential utilities for system monitoring and Kubernetes management:
-```bash
-sudo zypper install k9s btop docker  # 'k9s' for Kubernetes management, 'btop' for monitoring, and 'docker'
-```
+
 
 ### 4. Configure User Permissions
 Add user 'erin' to the Docker group to manage Docker without root privileges and ensure Docker starts automatically:
